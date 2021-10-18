@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./pages/home/Home.jsx";
+import PasswordGenerator from "./pages/PasswordGenerator/PasswordGenerator.jsx";
 import PasswordManager from "./pages/PasswordManager/PasswordManager.jsx";
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
           <PasswordManager />
         </Route>
         <Route path="/passwordGenerator">
-          <Home />
+          <PasswordGenerator />
         </Route>
       </Switch>
     </Router>

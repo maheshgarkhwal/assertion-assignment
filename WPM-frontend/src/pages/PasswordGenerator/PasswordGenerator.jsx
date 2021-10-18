@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import { axiosInstance } from "../../config";
-import "./home.css";
+import "./passwordGenerator.css";
 
-function GeneratePassword(props) {
+function PasswordGenerator(props) {
   const [password, setPassword] = useState("");
   const website = useRef();
 
@@ -77,4 +77,4 @@ function GeneratePassword(props) {
   );
 }
 
-export default GeneratePassword;
+export default PasswordGenerator;

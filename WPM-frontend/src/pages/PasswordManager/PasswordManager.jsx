@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { axiosInstance } from "../../config";
-import "../home/home.css";
+import "../PasswordGenerator/PasswordGenerator";
 const container = {
   width: "85%",
   marginInline: "auto",
@@ -37,6 +37,7 @@ const tData = {
 
 function PasswordManager(props) {
   const [data, setData] = useState([]);
+  const [show, setShow] = useState(false);
   const arr = [];
   useEffect(() => {
     async function findAll() {
@@ -67,6 +68,14 @@ function PasswordManager(props) {
           <button
             style={actionBtn}
             onClick={() => {
+              setShow(!show);
+            }}
+          >
+            Edit
+          </button>
+          <button
+            style={actionBtn}
+            onClick={() => {
               removeElement();
             }}
           >
@@ -78,23 +87,31 @@ function PasswordManager(props) {
         </div>
         <table style={table}>
           <tr>
-            <th style={tHead}>
-              <input type="checkbox"></input>{" "}
-            </th>
+            {
+              <th style={tHead}>
+                <li></li>
+              </th>
+            }
             <th style={tHead}> website Name </th>
             <th style={tHead}> Password </th>
           </tr>
           {data.map((val, index) => (
             <tr>
-              <td style={tData}>
-                <input
-                  type="checkbox"
-                  value={val.id}
-                  onClick={(e) => {
-                    arr.push(e.target.value);
-                  }}
-                ></input>
-              </td>
+              {show ? (
+                <td style={tData}>
+                  <input
+                    type="checkbox"
+                    value={val.id}
+                    onClick={(e) => {
+                      arr.push(e.target.value);
+                    }}
+                  ></input>
+                </td>
+              ) : (
+                <td style={tData}>
+                  <li></li>
+                </td>
+              )}
               <td style={tData}>{val.website}</td>
               <td style={tData}>{val.password}</td>
             </tr>
